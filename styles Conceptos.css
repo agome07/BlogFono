@@ -6,7 +6,8 @@
 
 body {
   height: 100vh;
-  background-image: url('IMG/fondo.jpg'); /* Ruta a tu fondo */
+  /*background-image: url('IMG/fondo.jpg'); /* Ruta a tu fondo */
+  background: linear-gradient(to bottom, #666666  0%, #000000 80%, #000000 100%);    background-size: cover;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
