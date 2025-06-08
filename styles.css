@@ -145,7 +145,11 @@
     font-family: "Crimson Text", serif;
     font-style: normal;
     text-align: center;
-    margin-top: 100px;   
+    margin-top: 20px;   
+  }
+
+  .titulo h1{
+    font-size: 30PX;
   }
 
   .titulo h2{
