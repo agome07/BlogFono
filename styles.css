@@ -6,8 +6,7 @@
   
   body {
     height: 100vh;
-    background-image: url('../IMG/fondo.jpg'); /* Ruta a tu fondo */
-    background-color: black;
+    background-image: url('/IMG/fondo.jpg'); /* Ruta a tu fondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
