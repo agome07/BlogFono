@@ -1,228 +1,241 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100vh;
-    /*background-image: url('IMG/fondo.jpg'); /* Ruta a tu fondo */
-    background: linear-gradient(to bottom, #666666  0%, #000000 80%, #000000 100%);    background-size: cover;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color:beige;
-    font-size: 25px;
-    padding-top: 100px; /* espacio para navbar */
-    position: relative;
-  }
-  
-  /* Overlay para darle contraste detrás del navbar */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background: rgba(255, 255, 255, 0.02);
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 0 0 20px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 1000;
-  }
-  
-  .logo-img {
-    height: 40px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 100px;
+  /* para navbar */
+  background: linear-gradient(to bottom, #666666 0%, #000000 80%, #000000 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: beige;
+  font-size: 25px;
+  position: relative;
+}
+
+main.content {
+  flex: 1; /* Este espacio crecerá para llenar el viewport */
+}
+
+/* Overlay para darle contraste detrás del navbar */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 20px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  font-family: "Alfa Slab One", serif;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd700;
+}
+
+.submenu {
+  font-family: "Alfa Slab One", serif;
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.menu li:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px;
+}
+
+/* Responsive */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.toggle-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .menu {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .menu li {
-    position: relative;
-  }
-  
-  .menu a {
-    font-family: "Alfa Slab One", serif;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    border-radius: 12px;
-  }
-  
-  .menu a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffd700;
-  }
-  
-  .submenu {
-    font-family: "Alfa Slab One", serif;
-    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
     top: 100%;
     left: 0;
-    min-width: 150px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  .menu li:hover .submenu {
-    display: block;
-  }
-  
-  .submenu li a {
-    display: block;
-    padding: 10px;
-  }
-  
-  /* Responsive */
-  .hamburger {
+    right: 0;
     display: none;
-    font-size: 26px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .toggle-menu {
-    display: none;
-  }
-  
-  @media (max-width: 768px) {
-    .menu {
-      flex-direction: column;
-      background-color: rgba(0, 0, 0, 0.9);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      display: none;
-      padding: 20px;
-    }
-  
-    .menu.show {
-      display: flex;
-    }
-  
-    .hamburger {
-      display: block;
-    }
-  
-    .submenu {
-      position: static;
-      margin-top: 10px;
-    }
-  
-    .menu li:hover .submenu {
-      display: none;
-    }
-  }
-  
-  .titulo {
-    font-family: "Crimson Text", serif;
-    font-style: normal;
-    text-align: center;
-    margin-top: 20px;   
-  }
-
-  .titulo h1{
-    font-size: 30PX;
-  }
-
-  .titulo h2{
-    margin-top: 30px;
-    font-size: 35px;
-  }
-
-  .integrantes {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 40px auto;
-    /* Elimina cualquier borde o fondo innecesario */
-    border: none;
-    background: none;
-    box-shadow: none;
-  }
-  
-  .integrante1 {
-    border: 2px solid #ccc;          /* Borde individual */
-    background-color:#58585847;       /* Fondo gris claro */
     padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    max-width: 250px;
-    flex: 1;
   }
-  
-  .integrante1 img {
-    height: 150px;
+
+  .menu.show {
+    display: flex;
+  }
+
+  .hamburger {
     display: block;
-    margin: 0 auto 15px;
-  }
-  
-  .integrante1 h1 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: beige;
-  }
-  
-  .integrante1 p {
-    font-size: 14px;
-    color: beige;
   }
 
-  .footer {
-    background-color: transparent;           /* Fondo oscuro */
-    color: #f1f1f1;                   /* Texto claro */
-    padding: 30px 20px;
-    text-align: center;
-    font-family: 'Georgia', serif;    /* Misma fuente elegante */
-
-  }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .footer-links {
+  .submenu {
+    position: static;
     margin-top: 10px;
   }
-  
-  .footer-links a {
-    color: #f1f1f1;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+
+  .menu li:hover .submenu {
+    display: none;
   }
-  
-  .footer-links a:hover {
-    color: #f5b841;  /* Un tono suave o dorado para resaltar */
-  }
+}
+
+.titulo {
+  font-family: "Crimson Text", serif;
+  font-style: normal;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.titulo h1 {
+  font-size: 30PX;
+}
+
+.titulo h2 {
+  margin-top: 30px;
+  font-size: 35px;
+}
+
+.integrantes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  /* Elimina cualquier borde o fondo innecesario */
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.integrante1 {
+  border: 2px solid #ccc;
+  /* Borde individual */
+  background-color: #58585847;
+  /* Fondo gris claro */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  flex: 1;
+}
+
+.integrante1 img {
+  height: 150px;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.integrante1 h1 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: beige;
+}
+
+.integrante1 p {
+  font-size: 14px;
+  color: beige;
+}
+
+.footer {
+  background-color: transparent;
+  /* Fondo oscuro */
+  color: #f1f1f1;
+  /* Texto claro */
+  padding: 30px 20px;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  /* Misma fuente elegante */
+
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #f1f1f1;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #f5b841;
+  /* Un tono suave o dorado para resaltar */
+}
